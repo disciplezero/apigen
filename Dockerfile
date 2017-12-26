@@ -1,4 +1,4 @@
-FROM vfac/envdevphpbase
+FROM vfac/envdevphpbase:7.2
 LABEL maintainer="Vincent Faliès <vincent@vfac.fr>"
 
 # Allow Composer to be run as root
