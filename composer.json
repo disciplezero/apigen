@@ -1,0 +1,8 @@
+{
+    "name": "vfalies/apigen",
+    "description": "Apigen tool docker image",
+    "require": {
+        "roave/better-reflection": "dev-master#c87d856",
+        "apigen/apigen": "dev-master"
+    }
+}
