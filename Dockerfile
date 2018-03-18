@@ -1,8 +1,7 @@
-FROM vfac/envdevphpbase:7.2-alpine
+FROM vfac/envdevphpbase:7.2-alpine-cli
 LABEL maintainer="Vincent Faliès <vincent@vfac.fr>"
 
-# Allow Composer to be run as root
-ENV COMPOSER_ALLOW_SUPERUSER 1
+USER root
 
 RUN apk update \
     && apk upgrade \
@@ -11,8 +10,13 @@ RUN apk update \
     && rm -rf /var/cache/apk/*
 
 COPY composer.json /app/composer.json
+
+RUN chown -R vfac:vfac /app
+
+USER vfac
+
 RUN cd /app/ \
-    && composer update --lock
+    && composer install
 
 COPY php.ini /usr/local/etc/php/php.ini
 
